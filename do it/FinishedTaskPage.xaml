@@ -1,0 +1,69 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="DoIt.FinishedTaskPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"    
+    xmlns:vm="clr-namespace:DoIt.ViewModels"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:myControls="clr-namespace:DoIt.Controls;assembly=DoIt"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"    
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    d:DataContext="{Binding FinishedTasksViewModel, Source={d:DesignInstance Type=vm:DesignData, IsDesignTimeCreatable=True}}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot ist das Stammraster, in dem alle anderen Seiteninhalte platziert werden-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel enthält den Namen der Anwendung und den Seitentitel-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="{Binding Strings.ApplicationTitleUpperCase, Source={StaticResource Strings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="{Binding Strings.FinishedTaskPageTitle, Source={StaticResource Strings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - zusätzliche Inhalte hier platzieren-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+          <myControls:LongListSelector ItemsSource="{Binding GroupedTasks}" toolkit:TiltEffect.IsTiltEnabled="True" 
+                                          SelectionChanged="ListBox_SelectionChanged" Name="TasksLongListSelecetor" Margin="12,0,0,0"                                          GroupItemTemplate="{StaticResource LongListSelectorTextGroupItemTemplate}"
+                                          GroupHeaderTemplate="{StaticResource LongListSelectorLetterGroupHeaderTemplate}"
+                                          ItemTemplate="{StaticResource TaskListTemplate}">
+            </myControls:LongListSelector>
+            <!--Empty ListBox Text-->
+            <TextBlock Visibility="{Binding GroupedTasks, Converter={StaticResource EmptyListVisibilityConverter}}" Grid.Row="1"
+                               Style="{StaticResource PhoneTextGroupHeaderStyle}" Text="{Binding Strings.FinishedTaskPageEmtpyString, Source={StaticResource Strings}}" 
+                               TextWrapping="Wrap"/>
+
+        </Grid>
+    </Grid>
+
+    <!--Animationen-->
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+</phone:PhoneApplicationPage>

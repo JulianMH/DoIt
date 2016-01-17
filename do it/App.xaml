@@ -1,0 +1,169 @@
+﻿<Application 
+    x:Class="DoIt.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:converters="clr-namespace:DoIt.Converters"
+    xmlns:myControls="clr-namespace:DoIt.Controls;assembly=DoIt"
+    xmlns:primitives="clr-namespace:Microsoft.Phone.Controls.Primitives"
+    >
+
+    <!--Application Resources-->
+    <Application.Resources>
+        <BitmapImage UriSource="Graphics/ContactPlaceholder.png" x:Key="ContactDefaultPicture"/>
+        
+        <!--Lokalisierungs Strings-->
+        <localization:XamlStrings xmlns:localization="clr-namespace:DoIt.Localization" x:Key="Strings"/>
+        
+        <!--Converters-->
+        <converters:EmptyListVisibilityConverter x:Key="EmptyListVisibilityConverter"/>
+        <converters:BooleanVisibilityConverter x:Key="BooleanVisibilityConverter"/>
+        <converters:BooleanVisibilityConverter x:Key="InverseBooleanVisibilityConverter" IsInverted="True"/>
+
+        <Style TargetType="myControls:LongListSelector">
+            <Setter Property="Background" Value="{StaticResource PhoneBackgroundBrush}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <primitives:TemplatedListBox x:Name="TemplatedListBox" 
+                                                 Background="{TemplateBinding Background}">
+                            <primitives:TemplatedListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </primitives:TemplatedListBox.ItemContainerStyle>
+                        </primitives:TemplatedListBox>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--DatePicker fixed Style. Orginal war ohne Rand wenn disabled und sah somit blöd aus-->
+        <Style TargetType="toolkit:DatePicker">
+            <Setter Property="Background" Value="{StaticResource PhoneTextBoxBrush}"/>
+            <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PhoneTextBoxBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneTextBoxForegroundBrush}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="PickerPageUri" Value="/Microsoft.Phone.Controls.Toolkit;component/DateTimePickers/DatePickerPage.xaml"/>
+            <!-- For RTL, the pattern needs to be reversed -->
+            <!--<Setter Property="ValueStringFormat" Value="{}{0:d}"/>-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="toolkit:DatePicker">
+                        <StackPanel>
+                            <ContentControl
+                            Content="{TemplateBinding Header}"
+                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                            Foreground="{StaticResource PhoneSubtleBrush}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Margin="12,0,12,-4"/>
+                            <Button
+                            x:Name="DateTimeButton"
+                            Content="{TemplateBinding ValueString}"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Height="72"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--TimePicker fixed Style. Orginal war ohne Rand wenn disabled und sah somit blöd aus-->
+        <Style TargetType="toolkit:TimePicker">
+            <Setter Property="Background" Value="{StaticResource PhoneTextBoxBrush}"/>
+            <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PhoneTextBoxBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneTextBoxForegroundBrush}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="PickerPageUri" Value="/Microsoft.Phone.Controls.Toolkit;component/DateTimePickers/TimePickerPage.xaml"/>
+            <!-- Ideally, the short time pattern 't' would be correct. However, it does not respect
+             the system's "24-hour clock" setting override and so the correct effective value of
+             ValueStringFormat is determined on an as-needed basis (unless overridden). -->
+            <!--<Setter Property="ValueStringFormat" Value="{}{0:t}"/>-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="toolkit:TimePicker">
+                        <StackPanel>
+                            <ContentControl
+                            Content="{TemplateBinding Header}"
+                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                            Foreground="{StaticResource PhoneSubtleBrush}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Margin="12,0,12,-4"/>
+                            <Button
+                            x:Name="DateTimeButton"
+                            Content="{TemplateBinding ValueString}"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Height="72"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--LongListSelector Templates-->
+        <DataTemplate x:Key="LongListSelectorTextGroupHeaderTemplate">
+            <Border Background="{StaticResource PhoneAccentBrush}" Margin="0,12,0,0" Height="62" HorizontalAlignment="Left">
+                <TextBlock Text="{Binding Key}" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="LongListSelectorTextGroupItemTemplate">
+            <Grid Background="{StaticResource PhoneAccentBrush}" Margin="{StaticResource PhoneTouchTargetOverhang}" Width="460">
+                <TextBlock Text="{Binding Key}" Style="{StaticResource PhoneTextLargeStyle}" Margin="{StaticResource PhoneTouchTargetOverhang}"/>
+                <Grid.Projection>
+                    <PlaneProjection RotationX="-60"/>
+                </Grid.Projection>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="LongListSelectorLetterGroupHeaderTemplate">
+            <Border Background="{StaticResource PhoneAccentBrush}" Margin="0,12,0,0" Height="62" Width="62" HorizontalAlignment="Left">
+                <TextBlock Text="{Binding Key}" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+            </Border>
+        </DataTemplate>
+        <!--Task List Template-->
+        <DataTemplate x:Key="TaskListTemplate">
+            <Grid Margin="0,12,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="284"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding DescriptionCapped}" Style="{StaticResource PhoneTextLargeStyle}"/>
+                <myControls:ScoreLabel Score="{Binding Score}" Grid.Column="1"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2">
+                    <Image Height="25" Width="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Source="{Binding CreatorIfNotUser.Picture}" Visibility="{Binding ContactIconVisibility}"
+                                           Margin="12,0,0,0" />
+                    <TextBlock Text="{Binding DueDateString}" Style="{StaticResource PhoneTextNormalStyle}"/>
+                    <TextBlock Text="{Binding DueTimeString}" Style="{StaticResource PhoneTextSubtleStyle}"
+                                               Visibility="{Binding DueTimeVisibility}"/>
+                </StackPanel>
+            </Grid>
+
+
+        </DataTemplate>
+    </Application.Resources>
+
+    <Application.ApplicationLifetimeObjects>
+        <!--Required object that handles lifetime events for the application-->
+        <shell:PhoneApplicationService 
+            Launching="Application_Launching" Closing="Application_Closing" 
+            Activated="Application_Activated" Deactivated="Application_Deactivated"/>
+    </Application.ApplicationLifetimeObjects>
+
+</Application>

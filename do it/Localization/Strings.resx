@@ -1,0 +1,473 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutPageAbout" xml:space="preserve">
+    <value>about</value>
+  </data>
+  <data name="AboutPageDesign" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="AboutPageDisconnectAccount" xml:space="preserve">
+    <value>disconnect account</value>
+  </data>
+  <data name="AboutPageDisconnectHeader" xml:space="preserve">
+    <value>microsoft account</value>
+  </data>
+  <data name="AboutPageFirstName" xml:space="preserve">
+    <value>first name</value>
+  </data>
+  <data name="AboutPageGraphics" xml:space="preserve">
+    <value>Graphics</value>
+  </data>
+  <data name="AboutPageLastName" xml:space="preserve">
+    <value>last name</value>
+  </data>
+  <data name="AboutPageNameWarning" xml:space="preserve">
+    <value>The name "{0}" is too long or to short, please enter another first name.</value>
+    <comment>{0} Vorname</comment>
+  </data>
+  <data name="AboutPageNameWarningTitle" xml:space="preserve">
+    <value>invalid name</value>
+  </data>
+  <data name="AboutPageNoConnection" xml:space="preserve">
+    <value>You can only change your name while connected to the internet.</value>
+  </data>
+  <data name="AboutPageNotifications" xml:space="preserve">
+    <value>push notifications</value>
+  </data>
+  <data name="AboutPageProgramming" xml:space="preserve">
+    <value>Programming</value>
+  </data>
+  <data name="AboutPageSettings" xml:space="preserve">
+    <value>settings</value>
+  </data>
+  <data name="AboutPageSupportMail" xml:space="preserve">
+    <value>support mail</value>
+  </data>
+  <data name="AboutPageSupportMailBody" xml:space="preserve">
+    <value>Hello,
+I am using {0} version {1} and I have a question or an idea for future versions:
+
+
+
+
+
+Many thanks!
+Kind Regards.</value>
+    <comment>{0} Name der App; {1} Version</comment>
+  </data>
+  <data name="AboutPageSupportMailSubject" xml:space="preserve">
+    <value>{0}: Questions and Ideas</value>
+    <comment>{0} Name der App</comment>
+  </data>
+  <data name="AlphabeticalOrder" xml:space="preserve">
+    <value>#abcdefghijklmnopqrstuvwxyz</value>
+  </data>
+  <data name="AppErrorLoading" xml:space="preserve">
+    <value>Error loading offline data. A backup of the last time you were logged in will be restored the next time a data connection is available.</value>
+  </data>
+  <data name="ApplicationBarAbout" xml:space="preserve">
+    <value>about and settings</value>
+  </data>
+  <data name="ApplicationBarAdd" xml:space="preserve">
+    <value>add</value>
+  </data>
+  <data name="ApplicationBarDisconnectAccount" xml:space="preserve">
+    <value>disconnect account</value>
+  </data>
+  <data name="ApplicationBarFindFriend" xml:space="preserve">
+    <value>find friend</value>
+  </data>
+  <data name="ApplicationBarFinishedTasks" xml:space="preserve">
+    <value>finished tasks</value>
+  </data>
+  <data name="ApplicationBarRemove" xml:space="preserve">
+    <value>remove</value>
+  </data>
+  <data name="ApplicationBarRemoveAds" xml:space="preserve">
+    <value>remove ads and more</value>
+  </data>
+  <data name="ApplicationBarRemoveFriend" xml:space="preserve">
+    <value>remove friend</value>
+  </data>
+  <data name="ApplicationBarRemoveFriendMessage" xml:space="preserve">
+    <value>Do you really want to remove {0} from your friends?</value>
+  </data>
+  <data name="ApplicationBarRemoveFriendMessageTitle" xml:space="preserve">
+    <value>remove friend?</value>
+  </data>
+  <data name="ApplicationTitle" xml:space="preserve">
+    <value>do it</value>
+  </data>
+  <data name="ApplicationTitleUpperCase" xml:space="preserve">
+    <value>DO IT</value>
+  </data>
+  <data name="CustomDateToTextConverterCustom" xml:space="preserve">
+    <value>date</value>
+  </data>
+  <data name="CustomDateToTextConverterFuture" xml:space="preserve">
+    <value>some day</value>
+  </data>
+  <data name="CustomDateToTextConverterSoon" xml:space="preserve">
+    <value>as soon as possible</value>
+  </data>
+  <data name="DataNewCreatedTask1" xml:space="preserve">
+    <value>Getting Started
+Enter your tasks in do it and receive points for finishing them.</value>
+  </data>
+  <data name="DataNewCreatedTask2" xml:space="preserve">
+    <value>About Points
+Receive bonus points for finishing tasks on time. Tasks from friends yield more points, finishing tasks late yields less points.</value>
+  </data>
+  <data name="DataNewCreatedTask3" xml:space="preserve">
+    <value>Note
+It's easy to cheat do it to get more points. Keep in mind, cheating your to do list means cheating yourself.</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>Sorry, something went wrong. You can help us fix the problem as soon as possible by mailing us an error report. Send an error report now?</value>
+  </data>
+  <data name="ErrorMessageTitle" xml:space="preserve">
+    <value>send error report?</value>
+  </data>
+  <data name="ErrorReportBody" xml:space="preserve">
+    <value>Hello,
+I am using {0} version {1} and the error {2} occurred:
+{3}
+A short description from me:
+
+
+
+
+Additional information:
+{4}
+Navigation:
+{5}
+
+Kind Regards.</value>
+  </data>
+  <data name="ErrorReportSubject" xml:space="preserve">
+    <value>{0}: Error report</value>
+  </data>
+  <data name="FinishedTaskPageEmtpyString" xml:space="preserve">
+    <value>No finished tasks... yet?</value>
+  </data>
+  <data name="FinishedTaskPageTitle" xml:space="preserve">
+    <value>finished tasks</value>
+  </data>
+  <data name="FriendDetailPageAccountCreatedDate" xml:space="preserve">
+    <value>using do it since</value>
+  </data>
+  <data name="FriendDetailPageAverageScore" xml:space="preserve">
+    <value>score per day</value>
+  </data>
+  <data name="FriendDetailPageCountry" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="FriendDetailPageNotFound" xml:space="preserve">
+    <value>Could not find the selected person.</value>
+  </data>
+  <data name="FriendDetailPageScore" xml:space="preserve">
+    <value>score</value>
+  </data>
+  <data name="FriendDetailPageUnknownCountry" xml:space="preserve">
+    <value>unknown</value>
+  </data>
+  <data name="LogInBoxMessage" xml:space="preserve">
+    <value>Do you want to upload all your offline tasks? Pressing cancel will delete all your offline tasks and reset your offline score.</value>
+  </data>
+  <data name="LogInBoxMessageTitle" xml:space="preserve">
+    <value>upload data?</value>
+  </data>
+  <data name="LogInBoxNotificationWarning" xml:space="preserve">
+    <value>do it will notify you about friend requests, when friends assign tasks to you or modify tasks assigned to you. Do you want to enable notifications?</value>
+  </data>
+  <data name="LogInBoxNotificationWarningTitle" xml:space="preserve">
+    <value>allow notifications?</value>
+  </data>
+  <data name="MainPageAddFriendMessage" xml:space="preserve">
+    <value>Do you want to add {0} as a friend?</value>
+    <comment>{0} Name des Freundes</comment>
+  </data>
+  <data name="MainPageAddFriendMessageTitle" xml:space="preserve">
+    <value>add friend?</value>
+  </data>
+  <data name="MainPageButtonMicrosoftAccount" xml:space="preserve">
+    <value>with Microsoft Account</value>
+  </data>
+  <data name="MainPageCurrentScore" xml:space="preserve">
+    <value>my current score</value>
+  </data>
+  <data name="MainPageDisconnectAccountMessage" xml:space="preserve">
+    <value>Disconnecting the app from your account makes working with your friends impossible. Do you really want to disconnect from your account?</value>
+  </data>
+  <data name="MainPageDisconnectAccountMessageTitle" xml:space="preserve">
+    <value>Disconnect Account</value>
+  </data>
+  <data name="MainPageFriends" xml:space="preserve">
+    <value>friends</value>
+  </data>
+  <data name="MainPageFriendsEmtpyString" xml:space="preserve">
+    <value>Could not connect to online friend list.</value>
+  </data>
+  <data name="MainPageFuture" xml:space="preserve">
+    <value>future</value>
+  </data>
+  <data name="MainPageLoginError" xml:space="preserve">
+    <value>Error logging in. Is the data connection working?</value>
+  </data>
+  <data name="MainPageLoginText" xml:space="preserve">
+    <value>Log in to work together with friends, assign tasks to them and compete for the highest productivity score.</value>
+  </data>
+  <data name="MainPageProgressIndicatorLoggingIn" xml:space="preserve">
+    <value>logging in...</value>
+  </data>
+  <data name="MainPageProgressIndicatorSyncing" xml:space="preserve">
+    <value>syncing...</value>
+  </data>
+  <data name="MainPageProgressIndicatorUploading" xml:space="preserve">
+    <value>uploading data...</value>
+  </data>
+  <data name="MainPageRequests" xml:space="preserve">
+    <value>requests</value>
+  </data>
+  <data name="MainPageTaskGroupLater" xml:space="preserve">
+    <value>later</value>
+  </data>
+  <data name="MainPageTaskGroupMonth" xml:space="preserve">
+    <value>month</value>
+  </data>
+  <data name="MainPageTaskGroupOverdue" xml:space="preserve">
+    <value>overdue</value>
+  </data>
+  <data name="MainPageTaskGroupThreeDays" xml:space="preserve">
+    <value>3 days</value>
+  </data>
+  <data name="MainPageTaskGroupToday" xml:space="preserve">
+    <value>today</value>
+  </data>
+  <data name="MainPageTaskGroupTomorrow" xml:space="preserve">
+    <value>tomorrow</value>
+  </data>
+  <data name="MainPageTaskGroupWeek" xml:space="preserve">
+    <value>week</value>
+  </data>
+  <data name="MainPageToday" xml:space="preserve">
+    <value>today</value>
+  </data>
+  <data name="MainPageTodayEmtpyString" xml:space="preserve">
+    <value>Nothing to do today. Yay! Maybe do some of your future tasks?</value>
+  </data>
+  <data name="MainPageTommorowEmtpyString" xml:space="preserve">
+    <value>Nothing to do. Tap + to add tasks.</value>
+  </data>
+  <data name="PersonFullName" xml:space="preserve">
+    <value>{0} {1}</value>
+    <comment>{0} Vorname; {1} Nachname</comment>
+  </data>
+  <data name="PersonUnknownFirstName" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="PersonUnknownLastName" xml:space="preserve">
+    <value>Person</value>
+  </data>
+  <data name="SearchFriendsPageAddMessage" xml:space="preserve">
+    <value>Do you want to send a friend request to {0}?</value>
+    <comment>{0} Name der Person</comment>
+  </data>
+  <data name="SearchFriendsPageAddMessageTitle" xml:space="preserve">
+    <value>add friend?</value>
+  </data>
+  <data name="SearchFriendsPageProgressIndicatorSearching" xml:space="preserve">
+    <value>searching...</value>
+  </data>
+  <data name="SearchFriendsPageSuccessMessage" xml:space="preserve">
+    <value>Request successfully sent.</value>
+  </data>
+  <data name="SearchFriendsPageTitle" xml:space="preserve">
+    <value>add friends</value>
+  </data>
+  <data name="TaskNewDescription" xml:space="preserve">
+    <value>New Task</value>
+  </data>
+  <data name="TaskPageBonusScoreEarly" xml:space="preserve">
+    <value>{0} early bonus</value>
+    <comment>{0} Anzahl Bonuspunkte</comment>
+  </data>
+  <data name="TaskPageBonusScoreLate" xml:space="preserve">
+    <value>-{0} not on time</value>
+    <comment>{0} Anzahl Strafpunkte</comment>
+  </data>
+  <data name="TaskPageBonusScoreOnTime" xml:space="preserve">
+    <value>on time</value>
+  </data>
+  <data name="TaskPageCreatedBy" xml:space="preserve">
+    <value>created by</value>
+  </data>
+  <data name="TaskPageDate" xml:space="preserve">
+    <value>date</value>
+  </data>
+  <data name="TaskPageDateTime" xml:space="preserve">
+    <value>date and time</value>
+  </data>
+  <data name="TaskPageDescription" xml:space="preserve">
+    <value>description</value>
+  </data>
+  <data name="TaskPageDone" xml:space="preserve">
+    <value>✓ done</value>
+  </data>
+  <data name="TaskPageFriends" xml:space="preserve">
+    <value>friends</value>
+  </data>
+  <data name="TaskPageFriendsEmtpyString" xml:space="preserve">
+    <value>No friends here? Add some people you know on the main page!</value>
+  </data>
+  <data name="TaskPageFriendsEmtpyStringNotUserCreated" xml:space="preserve">
+    <value>Loading list of assigned friends failed.</value>
+  </data>
+  <data name="TaskPageHeaderAdd" xml:space="preserve">
+    <value>ADD</value>
+  </data>
+  <data name="TaskPageHeaderEdit" xml:space="preserve">
+    <value>EDIT</value>
+  </data>
+  <data name="TaskPageNotFoundMessage" xml:space="preserve">
+    <value>This tasks does not seem to exist anymore.</value>
+  </data>
+  <data name="TaskPageProgressIndicatorLoadingTask" xml:space="preserve">
+    <value>loading task...</value>
+  </data>
+  <data name="TaskPageReminders" xml:space="preserve">
+    <value>reminders</value>
+  </data>
+  <data name="TaskPageRemoveMessage" xml:space="preserve">
+    <value>Do you really want to remove this task?</value>
+  </data>
+  <data name="TaskPageRemoveMessageTitle" xml:space="preserve">
+    <value>remove task?</value>
+  </data>
+  <data name="TaskPageTask" xml:space="preserve">
+    <value>task</value>
+  </data>
+  <data name="TaskPageTime" xml:space="preserve">
+    <value>time:</value>
+  </data>
+  <data name="TaskReminderHeader" xml:space="preserve">
+    <value>do it - Task</value>
+  </data>
+</root>

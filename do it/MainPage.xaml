@@ -1,0 +1,192 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="DoIt.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:DoIt.ViewModels"
+    xmlns:myControls="clr-namespace:DoIt.Controls;assembly=DoIt"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800" 
+    d:DataContext="{Binding MainPageViewModel, Source={d:DesignInstance Type=vm:DesignData, IsDesignTimeCreatable=True}}"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="False">
+    <!--Data context is set to sample data above and LayoutRoot contains the root grid where all other page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+
+        <!--Panorama control-->
+        <controls:Panorama Title="{Binding Strings.ApplicationTitle, Source={StaticResource Strings}}"
+                           SelectionChanged="MainPanorama_SelectionChanged" Name="MainPanorama">
+            <controls:PanoramaItem Header="{Binding Strings.MainPageToday, Source={StaticResource Strings}}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Background="{StaticResource PhoneForegroundBrush}" Margin="12,0,12,12">
+                        <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Strings.MainPageCurrentScore, Source={StaticResource Strings}}" Foreground="{StaticResource PhoneBackgroundBrush}"/>
+                        <myControls:ScoreLabel ForegroundColor="{StaticResource PhoneBackgroundColor}" Score="{Binding UserScore}"/>
+                    </StackPanel>
+
+                    <ScrollViewer Grid.Row="1">
+                        <ListBox ItemsSource="{Binding TasksToday}" SelectionChanged="ListBox_SelectionChanged" Padding="0,0,0,72" 
+                             ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         Name="TodayListBox" toolkit:TiltEffect.IsTiltEnabled="True" Grid.Row="1">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <toolkit:WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Height="173" Width="173" Margin="12,0,0,12" Background="{StaticResource PhoneAccentBrush}">
+                                        <Grid Margin="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.ColumnSpan="3" TextWrapping="Wrap" Text="{Binding DescriptionCapped}" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                            <myControls:ScoreLabel Grid.Column="0" Margin="0,0,0,6" Score="{Binding Score}" Grid.Row="2"/>
+                                            <TextBlock Text="{Binding DueTimeString}" Visibility="{Binding DueTimeVisibility}" Style="{StaticResource PhoneTextSubtleStyle}"
+                                                   Grid.Column="0" VerticalAlignment="Center" Grid.Row="1" HorizontalAlignment="Right" Grid.ColumnSpan="3"/>
+                                            <Image Height="46" Width="46" VerticalAlignment="Bottom" Source="{Binding CreatorIfNotUser.Picture}" Visibility="{Binding ContactIconVisibility}" Grid.Row="2" Grid.Column="2"/>
+                                            <Rectangle Height="32" Width="32" Visibility="{Binding OverdueMarkerVisibility}" Fill="{StaticResource PhoneForegroundBrush}"
+                                               Grid.ColumnSpan="3" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                                <Rectangle.OpacityMask>
+                                                    <ImageBrush ImageSource="/Icons/OverdueMarker.png"/>
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+
+                        </ListBox>
+                    </ScrollViewer>
+
+                    <!--Empty ListBox Text-->
+                    <TextBlock Visibility="{Binding TasksToday, Converter={StaticResource EmptyListVisibilityConverter}}" Grid.Row="1"
+                               Style="{StaticResource PhoneTextGroupHeaderStyle}" Text="{Binding Strings.MainPageTodayEmtpyString, Source={StaticResource Strings}}" 
+                               TextWrapping="Wrap"/>
+                </Grid>
+            </controls:PanoramaItem>
+            <controls:PanoramaItem Header="{Binding Strings.MainPageFuture, Source={StaticResource Strings}}">
+                <Grid>
+                    <myControls:LongListSelector ItemsSource="{Binding GroupedTasks}" toolkit:TiltEffect.IsTiltEnabled="True" 
+                                          SelectionChanged="ListBox_SelectionChanged" Name="FutureListBox" Margin="12,-12,0,0"
+                                          GroupItemTemplate="{StaticResource LongListSelectorTextGroupItemTemplate}" Grid.Row="1"
+                                          GroupHeaderTemplate="{StaticResource LongListSelectorTextGroupHeaderTemplate}"
+                                          ItemTemplate="{StaticResource TaskListTemplate}">
+                        <myControls:LongListSelector.ListFooter>
+                            <Grid Height="78"/>
+                        </myControls:LongListSelector.ListFooter>
+                    </myControls:LongListSelector>
+                    <!--Empty ListBox Text-->
+                    <TextBlock Visibility="{Binding GroupedTasks, Converter={StaticResource EmptyListVisibilityConverter}}" Grid.Row="1"
+                               Style="{StaticResource PhoneTextGroupHeaderStyle}" Text="{Binding Strings.MainPageTommorowEmtpyString, Source={StaticResource Strings}}" 
+                               TextWrapping="Wrap"/>
+                </Grid>
+            </controls:PanoramaItem>
+            <controls:PanoramaItem Header="{Binding Strings.MainPageFriends, Source={StaticResource Strings}}" Name="FriendsPanoramaItem">
+                <Grid Name="FriendsGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                  <myControls:LongListSelector ItemsSource="{Binding FriendsRanking}" toolkit:TiltEffect.IsTiltEnabled="True" 
+                                          SelectionChanged="ListBox_SelectionChanged" Name="FriendsListBox" Margin="12,-12,0,0"
+                                          GroupItemTemplate="{StaticResource LongListSelectorTextGroupItemTemplate}"
+                                              ListFooter="{Binding}" Grid.Row="1"
+                                          GroupHeaderTemplate="{StaticResource LongListSelectorLetterGroupHeaderTemplate}">
+                    <myControls:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,12,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="284"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <myControls:FriendLabel Friend="{Binding}"/>
+                                    <myControls:ScoreLabel Grid.Column="1" Score="{Binding Score}" VerticalAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </myControls:LongListSelector.ItemTemplate>
+                    <myControls:LongListSelector.ListFooterTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="78"/>
+                                    </Grid.RowDefinitions>
+                                    <Border Visibility="{Binding FriendRequestsVisibility}" Background="{StaticResource PhoneAccentBrush}" Margin="0,12,0,0" Height="62" HorizontalAlignment="Left">
+                                        <TextBlock Text="{Binding Strings.MainPageRequests, Source={StaticResource Strings}}" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                    </Border>
+                                    <ListBox Visibility="{Binding FriendRequestsVisibility}" Grid.Row="1" Margin="0" Padding="0" ItemsSource="{Binding FriendRequests}" SelectionChanged="FriendRequestListBox_SelectionChanged">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <myControls:FriendLabel  Margin="0,12,0,0" Friend="{Binding}"/>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Grid>
+                            </DataTemplate>
+                        </myControls:LongListSelector.ListFooterTemplate>
+                    </myControls:LongListSelector>
+                    <myControls:LogInBox Grid.Row="1"/>
+
+                    <!--Empty ListBox Text-->
+                    <TextBlock Visibility="{Binding FriendsNotLoadedVisibility}" Grid.Row="1"
+                               Style="{StaticResource PhoneTextGroupHeaderStyle}" Text="{Binding Strings.MainPageFriendsEmtpyString, Source={StaticResource Strings}}" 
+                               TextWrapping="Wrap"/>
+                </Grid>
+            </controls:PanoramaItem>
+        </controls:Panorama>
+
+        <!--Auskommentieren, um ein Ausrichtungsraster anzuzeigen und sicherzustellen, dass Ihre Steuerelemente
+            an den allgemeinen Grenzen ausgerichtet sind.  Das Bild hat oben einen Rand von -32 px wegen
+            der Taskleiste. Legen Sie dies auf 0 fest (oder entfernen Sie den Rand komplett),
+            wenn die Taskleiste ausgeblendet wird.
+
+            Entfernen Sie vor dem Versand dieses XAML und das Bild selbst.-->
+        <!--<Image Source="/Graphics/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,0,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False"
+               />-->
+
+    </Grid>
+
+    <!--Animationen-->
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+</phone:PhoneApplicationPage>

@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="DoIt.Controls.LogInBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    
+    <Border Visibility="{Binding LogInMessageVisibility}" VerticalAlignment="Top" Padding="6"
+                            Background="{StaticResource PhoneChromeBrush}" Margin="12">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Style="{StaticResource PhoneTextLargeStyle}" TextWrapping="Wrap"
+                                       Text="{Binding Strings.MainPageLoginText, Source={StaticResource Strings}}"/>
+            <Button toolkit:TiltEffect.IsTiltEnabled="True" Click="LogInButton_Click"
+                                    Content="{Binding Strings.MainPageButtonMicrosoftAccount, Source={StaticResource Strings}}"/>
+            <toolkit:PerformanceProgressBar Name="PerfomanceProgressBar" Visibility="Collapsed"/>
+        </StackPanel>
+    </Border>
+</UserControl>
