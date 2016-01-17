@@ -4,7 +4,7 @@ https://www.microsoft.com/en-us/store/apps/do-it/9nblggh08tvl
 
 I do no longer have time to update and keep developing this app, but I will update it in the store if someone contributes to this project on github.
 
-The azure backend is not open source for now. Message me if you want to see the backend code.
+The azure backend is not open source for now. Message me if you want to see the backend code or need the ClientIDs for testing.
 
 Make sure you install the LiveSDK to be able to compile the source code:
 https://www.microsoft.com/en-us/download/details.aspx?id=42552
